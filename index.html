@@ -1,0 +1,750 @@
+<html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <style>
+        /* Suas estilos atuais */
+        @media (max-width: 640px) {
+            .atm-hidden-mobile {
+                display: none
+            }
+        }
+
+        @media (min-width: 640px) {
+            .atm-hidden-desktop {
+                display: none
+            }
+        }
+
+        .col-span-1 {
+            grid-column: span 1 / span 1;
+        }
+
+        .col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .grid-cols-6 {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .grid-cols-5 {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .basis-1\/2 {
+            flex-basis: 50%
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .gap-1 {
+            gap: 4px;
+        }
+
+        .gap-2 {
+            gap: 8px;
+        }
+
+        .gap-4 {
+            gap: 16px;
+        }
+
+        .gap-6 {
+            gap: 24px;
+        }
+
+        .gap-12 {
+            gap: 48px;
+        }
+
+        .gap-24 {
+            gap: 96px;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .basis-full {
+            flex-basis: 100%
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body, center, dd, del, div, dt, em, footer, h1, h2, h3, h4, h5, h6, i, iframe, img, p, q, s, small, span, strike, strong, sub, sup, table, tbody, td, tr, u {
+            margin: -1px 0 0 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            font-family: Roboto, sans-serif
+        }
+
+        .u {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            cursor: default
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        body {
+            line-height: 1
+        }
+
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: Roboto, sans-serif
+        }
+
+        a.btn {
+            font-family: Montserrat, sans-serif
+        }
+
+        em span.lg, em span.md, em span.sm {
+            font-style: italic
+        }
+
+        @media (max-width: 600px) {
+            .flex-large, .flex-small {
+                margin-right: 0!important;
+                margin-bottom: 16px
+            }
+        }
+
+        .flexrow {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .flex-large, .flex-small {
+            flex-basis: 100%
+        }
+
+        .flex-large:last-child, .flex-small:last-child {
+            margin-right: 0!important
+        }
+
+        @media (min-width: 600px) {
+            .flex-small {
+                flex: 1;
+                margin-bottom: 0!important;
+                padding-bottom: 0!important
+            }
+
+            .flex-small.half {
+                flex: 0 0 calc(1 / 2 * 100%)
+            }
+
+            .flex-small.one-fifth {
+                flex: 0 0 calc(1 / 5 * 100%)
+            }
+
+            .flex-small.two-fifths {
+                flex: 0 0 calc(2 / 5 * 100%)
+            }
+
+            .flex-small.one-fourth {
+                flex: 0 0 calc(1 / 4 * 100%)
+            }
+
+            .flex-small.two-fourths {
+                flex: 0 0 calc(2 / 4 * 100%)
+            }
+
+            .flex-small.three-fourths {
+                flex: 0 0 calc(3 / 4 * 100%)
+            }
+
+            .flex-small.one-third {
+                flex: 0 0 calc(1 / 3 * 100%)
+            }
+
+            .flex-small.two-thirds {
+                flex: 0 0 calc(2 / 3 * 100%)
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .flex-large {
+                flex: 1;
+                margin-bottom: 0
+            }
+
+            .flex-large.half {
+                flex: 0 0 calc(1 / 2 * 100%)
+            }
+
+            .flex-large.one-fifth {
+                flex: 0 0 calc(1 / 5 * 100%)
+            }
+
+            .flex-large.two-fifths {
+                flex: 0 0 calc(2 / 5 * 100%)
+            }
+
+            .flex-large.one-fourth, .flex-large.two-fourths {
+                flex: 0 0 calc(1 / 4 * 100%)
+            }
+
+            .flex-large.three-fourths {
+                flex: 0 0 calc(3 / 4 * 100%)
+            }
+
+            .flex-large.one-third {
+                flex: 0 0 calc(1 / 3 * 100%)
+            }
+
+            .flex-large.two-thirds {
+                flex: 0 0 calc(2 / 3 * 100%)
+            }
+        }
+
+        @media (min-width: 640px) {
+            .sm\:gap-1 {
+                gap: 6px
+            }
+
+            .sm\:gap-2 {
+                gap: 12px!important
+            }
+
+            .sm\:gap-4 {
+                gap: 24px
+            }
+
+            .sm\:gap-6 {
+                gap: 32px
+            }
+
+            .sm\:gap-12 {
+                gap: 64px
+            }
+
+            .sm\:gap-24 {
+                gap: 128px
+            }
+
+            .sm\:grid-cols-6 {
+                grid-template-columns: repeat(6, minmax(0, 1fr))
+            }
+
+            .sm\:grid-cols-5 {
+                grid-template-columns: repeat(5, minmax(0, 1fr))
+            }
+
+            .sm\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr))
+            }
+
+            .sm\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr))
+            }
+
+            .sm\:grid-cols-3 {
+                grid-template-columns: repeat(3, minmax(0, 1fr))
+            }
+
+            .sm\:grid-cols-1 {
+                grid-template-columns: repeat(1, minmax(0, 1fr))
+            }
+        }
+    </style>
+    <style>
+        /* Estilos críticos inline para evitar bloqueio de renderização */
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        /* Adicione seus estilos críticos inline aqui */
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Roboto:wght@400;500;600;700;800&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script>
+        /* Seus scripts atuais */
+        function openDrawer() {
+            document.querySelector('.atm-drawer').style.right = '0';
+            document.querySelector('.atm-overlay').classList.remove('atm-hidden');
+            setTimeout(() => {
+                document.querySelector('.atm-overlay').classList.add('atm-visible');
+            }, 0);
+        }
+
+        function closeDrawer() {
+            document.querySelector('.atm-drawer').style.right = '-50vw';
+            document.querySelector('.atm-overlay').classList.remove('atm-visible');
+            setTimeout(() => {
+                document.querySelector('.atm-overlay').classList.add('atm-hidden');
+            }, 300);
+        }
+    </script>
+    <script>
+        /* Seus scripts adicionais, se houver */
+        document.querySelectorAll('a').forEach(a => {
+            if (a.getAttribute('href').includes('#')) {
+                a.setAttribute('target', '_blank');
+            }
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const href = a.getAttribute('href');
+                if (href !== "#" && href !== "") {
+                    const elExists = document.querySelector(href);
+                    if (elExists) {
+                        document.querySelector(href).scrollIntoView();
+                    }
+                }
+            });
+        });
+    </script>
+      <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Obtém a URL atual
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Obtém o valor do parâmetro &subid
+    var trackingParam = urlParams.get('subid');
+
+    // Atualiza todos os links com o atributo "data-affiliate-link"
+    document.querySelectorAll('[data-affiliate-link]').forEach(function (link) {
+      var affiliateLink = link.getAttribute('data-affiliate-link');
+      if (affiliateLink && trackingParam) {
+        // Adiciona o parâmetro de rastreamento ao link de afiliado
+        link.href = affiliateLink + '&subid=' + trackingParam;
+      }
+    });
+  });
+</script>
+</head>
+
+
+
+
+<body class="vsc-initialized" style="background-color: rgb(255, 255, 255);">
+          <div class="division-1658581343653__wrapper">
+            
+      <style>
+        #division-1658581343653 {
+          border: none;
+          border-radius: undefined;
+          margin: 0;
+          position: relative;
+          padding: 3vh 20vw 3vh 20vw;
+          background-color: #ffffff;
+          
+          
+          
+        }
+        @media (max-width:1200px) {
+          #division-1658581343653 {
+            padding: 2.25vh 15vw 2.25vh 15vw;
+            margin: 0;
+          }
+        }
+        @media (max-width:600px) {
+          #division-1658581343653 {
+            margin: 0;
+            padding: 1.5vh 1.5vw 1.5vh 1.5vw;
+            
+          }
+        }
+      </style>
+      <div id="division-1658581343653" class="MNawFx9882704">
+      
+    <div class="image-eQmtQA5920366"> 
+      <style>
+        .image-eQmtQA5920366-element img {
+          
+          display: block;
+          margin-left: 0;
+          margin-right: auto;
+          margin-bottom: 3.75vh;
+          margin-top: 3.75vh;
+          max-width: 60%;
+          border-radius: 0;
+          border: none;
+        }
+        @media (max-width: 1200px) {
+          .image-eQmtQA5920366-element img {
+            max-width: 54%;
+          }
+        }
+        @media (max-width: 600px) {
+          .image-eQmtQA5920366-element img {
+            max-width: 90%;
+            
+          }
+        }
+      </style>
+      <div class="image-eQmtQA5920366-element">
+    <a class="image_eQmtQA5920366 img_self target-img-url" href="https://getpuravive.com/news/?aff_id=112119"></a>
+    <img loading="lazy" src="https://media.atomicatpages.com/u/dqy3l6f7giUaMJ9P5F4DofJCykw2/Pictures/ahYrPL5958957.webp" alt="">
+</div>
+    </div>
+  
+    <div class="headline-1658581343654lMpslJ"> 
+      <style>
+        .headline-1658581343654lMpslJ-element h1 {
+          font-size: 2.31vw;
+          text-align: center;
+          padding-top: 2vh;
+          padding-bottom: 2vh;
+          color: #000000;
+          line-height: 1.1;
+          font-weight: 500;
+          false
+        }
+        @media (max-width: 1200px) {
+          .headline-1658581343654lMpslJ-element h1 {
+            font-size: 2.80vw;
+            padding-top: 1.5vh;
+            padding-bottom: 1.5vh;
+          }
+        }
+        @media (max-width: 640px) {
+          .headline-1658581343654lMpslJ-element h1 {
+            font-size: 7.50vw;
+            padding-top: 1.5vh;
+            padding-bottom: 1.5vh;
+            text-align: center;
+          }
+        }
+      </style>
+      <div class="headline-1658581343654lMpslJ-element headline">
+        <h1>
+          Exotic&nbsp;<span style="color:#0039ff"><b>"Rice Method"</b></span>&nbsp;<br>Liquefies Fat&nbsp;<span style="color:#0039ff"><b>Every 24 hours</b></span>
+        </h1>
+      </div>
+    </div>
+  
+    <div class="image-RYflBQ6167789"> 
+      <style>
+        .image-RYflBQ6167789-element img {
+          cursor: pointer;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 0.25vh;
+          margin-top: 0.25vh;
+          max-width: 80%;
+          border-radius: 0;
+          border: none;
+        }
+        @media (max-width: 1200px) {
+          .image-RYflBQ6167789-element img {
+            max-width: 72%;
+          }
+        }
+        @media (max-width: 600px) {
+          .image-RYflBQ6167789-element img {
+            max-width: 92%;
+            margin-left:auto;margin-right:auto;
+          }
+        }
+      </style>
+      <div class="image-RYflBQ6167789-element">
+  <a class="image_RYflBQ6167789 img_blank target-img-url" href="https://getpuravive.com/news/?aff_id=112119" data-affiliate-link="https://getpuravive.com/news/?aff_id=112119"></a>
+  <img class="image_RYflBQ6167789" loading="lazy" src="https://media.atomicatpages.com/u/dqy3l6f7giUaMJ9P5F4DofJCykw2/Pictures/bCSBXf6207864.webp" alt="">
+</div>
+    </div>
+  
+    <div class="description-1658581519684A04PEd"> 
+      <style>
+        .description-1658581519684A04PEd-element h3 {
+          font-size: 1.32vw;
+          text-align: center;
+          padding-top: 0vh;
+          padding-bottom: 2vh;
+          color: #000000;
+          line-height: 1.1;
+          font-weight: 400;
+          false
+        }
+        @media (max-width: 1200px) {
+          .description-1658581519684A04PEd-element h3 {
+            font-size: 1.80vw;
+            padding-top: 0vh;
+            padding-bottom: 1.5vh;
+          }
+        }
+        @media (max-width: 640px) {
+          .description-1658581519684A04PEd-element h3 {
+            font-size: 4.00vw;
+            padding-top: 0vh;
+            padding-bottom: 1.5vh;
+            text-align: center;
+          }
+        }
+      </style>
+      <div class="description-1658581519684A04PEd-element ">
+        <h3>
+          (234,205 People Do it Every Day)<br>
+        </h3>
+      </div>
+    </div>
+  
+      <div class="button-KNWrap7141706">
+      <style>
+        
+        a.button-KNWrap7141706-element {
+          background-color: #1b9600;
+          border-radius: 4px;
+          border: 1px solid #000000;
+          color: #ffffff;
+          padding: 16px 32px 16px 32px;
+          font-weight: 600;
+          display: block;
+          width: fit-content;
+          text-align: center;
+          margin: 6vh auto 6vh auto;
+          font-size: 1.49vw;
+          box-sizing: border-box;
+          max-width: 100%;
+          transition: all 0.5s ease-in-out;
+        }
+        a.button-KNWrap7141706-element:hover {
+          filter: brightness(1.2);
+        }
+        @media (max-width: 1200px) {
+          a.button-KNWrap7141706-element {
+            font-size: 1.69vw;
+            margin: 3.96vh auto 4.5vh auto;
+            padding: 8px 16px 8px 16px;
+          }
+        }
+        @media (max-width: 640px) {
+          a.button-KNWrap7141706-element {
+            font-size: 4.38vw;
+            padding: 12px 24px 12px 24px;
+            margin: 3vh auto 3vh auto;
+            width: 100%;
+          }
+        }
+      </style>
+      <a href="https://getpuravive.com/news/?aff_id=112119" target="_blank" class="btn button-KNWrap7141706-element" data-affiliate-link="https://getpuravive.com/news/?aff_id=112119">
+  💎💎💎 TAP HERE TO WATCH THE VIDEO NOW
+</a>
+    </div>
+    
+    <div class="text-zHtlkX6978832"> 
+      <style>
+        .text-zHtlkX6978832-element p {
+          font-size: 1.98vw;
+          text-align: center;
+          padding-top: 2vh;
+          padding-bottom: 2vh;
+          color: #000000;
+          line-height: 1.1;
+          font-weight: 400;
+          false
+        }
+        @media (max-width: 1200px) {
+          .text-zHtlkX6978832-element p {
+            font-size: 3.00vw;
+            padding-top: 1.5vh;
+            padding-bottom: 1.5vh;
+          }
+        }
+        @media (max-width: 640px) {
+          .text-zHtlkX6978832-element p {
+            font-size: 4.38vw;
+            padding-top: 1.5vh;
+            padding-bottom: 1.5vh;
+            text-align: left;
+          }
+        }
+      </style>
+      <div class="text-zHtlkX6978832-element text">
+        <p>
+          Right now, THOUSANDS of people all over America swear by this unusual method to dissolve stubborn fat.<br><br>Francine was able to break past her plateau&nbsp;<b>to drop 34 lbs and her waist is smaller than ever...</b><br><br><b>Debra dropped 47 lbs...</b><br><br>And once i saw the fat dissolve away for me too, l had to share it with you...<br><br>Just watch this surprising video and discover this simple method yourself to start burning calories even when you’re sleeping<br><br>
+        </p>
+      </div>
+    </div>
+  
+      <div class="button-16585815444510czNJj">
+      <style>
+        
+        a.button-16585815444510czNJj-element {
+          background-color: #1b9600;
+          border-radius: 4px;
+          border: 1px solid #000000;
+          color: #ffffff;
+          padding: 16px 32px 16px 32px;
+          font-weight: 600;
+          display: block;
+          width: fit-content;
+          text-align: center;
+          margin: 3vh auto 10vh auto;
+          font-size: 1.49vw;
+          box-sizing: border-box;
+          max-width: 100%;
+          transition: all 0.5s ease-in-out;
+        }
+        a.button-16585815444510czNJj-element:hover {
+          filter: brightness(1.2);
+        }
+        @media (max-width: 1200px) {
+          a.button-16585815444510czNJj-element {
+            font-size: 1.69vw;
+            margin: 1.98vh auto 7.5vh auto;
+            padding: 8px 16px 8px 16px;
+          }
+        }
+        @media (max-width: 640px) {
+          a.button-16585815444510czNJj-element {
+            font-size: 4.38vw;
+            padding: 12px 24px 12px 24px;
+            margin: 1.5vh auto 5vh auto;
+            width: 100%;
+          }
+        }
+      </style>
+      <a href="https://getpuravive.com/news/?aff_id=112119" target="_blank" class="btn button-KNWrap7141706-element" data-affiliate-link="https://getpuravive.com/news/?aff_id=112119">
+  💎💎💎 TAP HERE TO WATCH THE VIDEO NOW
+</a>
+    </div>
+    </div>
+    
+          </div>
+        
+          <div class="division-1658582251300__wrapper">
+            
+      <style>
+        #division-1658582251300 {
+          border: none;
+          border-radius: undefined;
+          margin: 0;
+          position: relative;
+          padding: 5vh 20vw 5vh 20vw;
+          background-color: #c9c9c9;
+          
+          
+          
+        }
+        @media (max-width:1200px) {
+          #division-1658582251300 {
+            padding: 3.75vh 15vw 3.75vh 15vw;
+            margin: 0;
+          }
+        }
+        @media (max-width:600px) {
+          #division-1658582251300 {
+            margin: 0;
+            padding: 3vh 1.5vw 3vh 1.5vw;
+            
+          }
+        }
+      </style>
+      <div id="division-1658582251300" class="unAmSY9882705">
+      
+    <div class="footer-1658582257377dY0j5w">
+      <style>
+        .footer-1658582257377dY0j5w-element {
+          text-align: center;
+          font-size: 1.20vw;
+          color: #000000;
+        }
+        .footer-1658582257377dY0j5w-element a {
+          padding: 0 !important;
+          color: #000000 !important;
+        }
+        @media (max-width:1200px) {
+          .footer-1658582257377dY0j5w-element {
+            text-align: center;
+            font-size: 1.95vw;
+            color: #000000;
+          }
+        }
+        @media (max-width:640px) {
+          .footer-1658582257377dY0j5w-element {
+            text-align: center;
+            font-size: 3.30vw;
+            color: #000000;
+          }
+        }
+      </style>
+      <footer class="footer-1658582257377dY0j5w-element">
+        <p><strong>Copyright 2023 – All Rights Reserved ®</strong></p>
+        <p style="margin-top:4px;"></p>
+        <div style="display:flex;align-items:center;justify-content:center;margin-top:24px;">
+          <a id="t" style="margin-right:12px" href="#" target="_blank">
+            Contact
+          </a> <span style="margin-right:12px">·</span>
+          <a id="p" href="#" target="_blank">
+            Privacy Policy
+          </a>
+        </div>
+        <p style="margin-top:24px;">
+          This site is not a part of the Youtube website or Youtube Inc. Additionally, This site is NOT endorsed by Youtube in any way. YOUTUBE is a trademark of YOUTUBE, Inc
+        </p>
+        <script>
+          const pr = window.location.href + "privacidade",
+            te = window.location.href + "termos";
+            document.getElementById("p").setAttribute("href", pr), document.getElementById("t").setAttribute("href", te);
+        </script>
+      </footer></div>
+    
+  </div>
+    
+          </div>
+        </body></html>
